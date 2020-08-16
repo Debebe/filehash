@@ -9,7 +9,7 @@
 <meta name="generator" content="pandoc" />
 
 
-<meta name="author" content="Debebe Shaweno Adewo" />
+<meta name="author" content="Debebe Shaweno" />
 
 
 <title>Peer-graded Assignment: Course Project 1</title>
@@ -375,7 +375,7 @@ $(document).ready(function () {
 
 
 <h1 class="title toc-ignore">Peer-graded Assignment: Course Project 1</h1>
-<h4 class="author">Debebe Shaweno Adewo</h4>
+<h4 class="author">Debebe Shaweno</h4>
 <h4 class="date">16/08/2020</h4>
 
 </div>
@@ -383,7 +383,7 @@ $(document).ready(function () {
 
 <p>This assignment makes use of data from a personal activity monitoring device. This device collects data at 5 minute intervals through out the day. The data consists of two months of data from an anonymous individual collected during the months of October and November, 2012 and include the number of steps taken in 5 minute intervals each day.</p>
 <p>The data for this assignment can be downloaded from the course web site:</p>
-<p>The variables included in this dataset are:</p>
+<p>The variables included in this dataset are three:</p>
 <ol style="list-style-type: decimal">
 <li><p><strong>steps</strong>: Number of steps taking in a 5-minute interval (missing values are coded as NA)</p></li>
 <li><p><strong>date</strong>: The date on which the measurement was taken in YYYY-MM-DD format</p></li>
@@ -503,7 +503,7 @@ interval_at_max_steps</code></pre>
 <pre class="r"><code>sum(is.na(data$steps)) </code></pre>
 <pre><code>## [1] 2304</code></pre>
 <p><strong>2.Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.</strong></p>
-<p>Imputing using mean from a specific data is not feasible as data does not exist for a particular date with missing values. So I’m imputing using a mean for the whole variable</p>
+<p>Imputing using mean from a specific data is not feasible as data does not exist for a particular date with missing values. So I’m imputing using a mean for the whole variable. The replica of orginal data is dat here.</p>
 <pre class="r"><code>dat &lt;- data
 A &lt;- dat %&gt;% 
        group_by(date) %&gt;% 

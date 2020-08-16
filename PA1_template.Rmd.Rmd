@@ -1,6 +1,6 @@
 ---
 title: 'Peer-graded Assignment: Course Project 1'
-author: "Debebe Shaweno Adewo"
+author: "Debebe Shaweno"
 date: "16/08/2020"
 output: html_document
 ---
@@ -151,7 +151,7 @@ sum(is.na(data$steps))
 
 **2.Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.**
 
-Imputing using mean from a specific data is not feasible as data does not exist for a particular date with missing values.  So I'm imputing using a mean for the whole variable
+Imputing using mean from a specific data is not feasible as data does not exist for a particular date with missing values.  So I'm imputing using a mean for the whole variable. The replica of orginal data is dat here. 
 
 ```{r}
 dat <- data
