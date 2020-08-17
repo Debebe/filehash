@@ -39,7 +39,7 @@ library(patchwork)
 Set the working directory to a folder that contains the data
 
 ```{r}
- setwd("~/Documents/Reproduceable_research")
+setwd("~/Documents/GitHub/filehash")
 ```
 
 
