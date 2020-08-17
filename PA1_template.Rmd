@@ -88,6 +88,7 @@ total_number_steps_per_day_NA <- data[, .(steps_day= sum(steps)), by= date]
 a<-qplot(total_number_steps_per_day_NA$steps, geom="histogram", main='Number of steps-with NA',
       fill=I('pink'), col=I('pink'), alpha=I(0.5))  + xlab('number of steps') + ylab('density')
 a
+ggsave(a, file = 'fig.1_histogram_of_total_number_of_steps_day.png')
 ```
 
 ### 3. Mean and median number of   each day 
@@ -98,6 +99,7 @@ The mean and median steps taken per day is **10766.19** and **10765** steps resp
 
 ```{r}
 mean(missing_excluded)
+
 ```
 
 #### Median
@@ -125,6 +127,8 @@ head(time_series)
 ```{r}
 ggplot(time_series, aes(interval, steps)) + geom_line(col='red') +xlab('5- Minute intervals') + 
 ylab('Average steps taken ~ daily')
+ggsave('fig.2_time_series_plot_of_5_munte_interval.png')
+
 ```
 
 
@@ -151,15 +155,17 @@ sum(is.na(data$steps))
 
 **2.Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.**
 
-Imputing using mean from a specific data is not feasible as data does not exist for a particular date with missing values.  So I'm imputing using a mean for the whole variable. The replica of orginal data is dat here. 
+ So I'm imputing using a mean for the whole variable. The replica of orginal data is dat here. 
+
+Imputation- the mean over the entire variable is used to impute missing values
 
 ```{r}
 dat <- data
-A <- dat %>% 
-       group_by(date) %>% 
-       mutate(steps = ifelse(is.na(steps), 
-                              mean(steps, na.rm=TRUE), steps))
-A
+# A <- dat %>% 
+#        group_by(date) %>% 
+#        mutate(steps = ifelse(is.na(steps), 
+#                               mean(steps, na.rm=TRUE), steps))
+# A
 
 # uses mean from all dates where values are recorded
 dat$steps[is.na(dat$steps)] <- mean(dat$steps, na.rm=TRUE)
@@ -183,6 +189,8 @@ total_number_steps_per_day_noNA <- dat[, .(steps_day= sum(steps)), by= date]
 b<-qplot(total_number_steps_per_day_noNA$steps, geom="histogram", main='Number of steps-no NA',
       fill=I('pink'), col=I('pink'), alpha=I(0.5))  + xlab('number of steps') + ylab('density')
 a+b
+
+ggsave(b, file = 'fig.3_histogram_of_total_number_of_steps_day_updated.png')
 ```
 
 #### Mean
@@ -219,4 +227,7 @@ head(dat)
 ```{r}
 ggplot(dat, aes(x =interval , y=steps, color=dateType)) +
        geom_line() + labs(title = "Steps", x = "5-minute interval", y = "Total Number of Steps") +facet_wrap(~ dateType)
+
+ggsave('fig.4_panel_plots.png')
+
 ```
